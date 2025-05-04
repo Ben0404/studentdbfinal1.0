@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/studentdbfinal/providers/Microsoft.ServiceLinker/linkers/studentdbcs_A317547D52",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/studentdbfinaldbserver/databases/studentdbfinal1.0_db",
+      "type": "mssql.azure",
+      "connectionId": "studentdbcs"
+    }
+  }
+}
