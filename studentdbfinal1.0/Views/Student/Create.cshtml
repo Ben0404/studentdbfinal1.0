@@ -1,0 +1,140 @@
+﻿@model studentdbfinal1._0.Studentquery1
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container-fluid bg-light p-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center text-white bg-success p-4 rounded mb-4 shadow-lg" style="font-size: 2rem;">
+                Create New Student Record
+            </h2>
+
+            <div class="card shadow-lg p-4" style="background-color: #f8f9fa; border-radius: 10px;">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+                        <!-- Student Details Section -->
+                        <h4 class="text-success">Student Details</h4>
+                        <hr class="text-success">
+
+                        <!-- Surname -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Surname</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Enter the student's last name.</span>
+                            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                            @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">First Name</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Enter the student's first name.</span>
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Age -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Age</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Enter the student's age in years.</span>
+                            @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- BNumber -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">BNumber</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Must start with 'B' followed by 8 digits (e.g. B12345678).</span>
+                            @Html.EditorFor(model => model.BNumber, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                            @Html.ValidationMessageFor(model => model.BNumber, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Contact Information Section -->
+                        <h4 class="text-success">Contact Information</h4>
+                        <hr class="text-success">
+
+                        <!-- Telephone -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Telephone</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Include area code if applicable (e.g. 02812345678).</span>
+                            @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                            @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Address</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Enter full postal address including town/city.</span>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Email</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Use a valid email format (e.g. student@email.com).</span>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Assessment Information Section -->
+                        <h4 class="text-success">Assessment Information</h4>
+                        <hr class="text-success">
+
+                        <!-- Assessment 1 -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Assessment 1 Mark</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Enter a mark between 0 and 100.</span>
+                            @Html.EditorFor(model => model.Assessment1Mark, new { htmlAttributes = new { @class = "form-control form-control-lg", @oninput = "calculateAverage()" } })
+                            @Html.ValidationMessageFor(model => model.Assessment1Mark, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Assessment 2 -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Assessment 2 Mark</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Enter a mark between 0 and 100.</span>
+                            @Html.EditorFor(model => model.Assessment2Mark, new { htmlAttributes = new { @class = "form-control form-control-lg", @oninput = "calculateAverage()" } })
+                            @Html.ValidationMessageFor(model => model.Assessment2Mark, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Overall Module Mark -->
+                        <div class="form-group mb-4">
+                            <label class="control-label">Overall Module Mark</label>
+                            <span class="text-success" style="font-size: 0.875rem;">Automatically calculated average of both assessments.</span>
+                            @Html.EditorFor(model => model.OverallModuleMark, new { htmlAttributes = new { @class = "form-control form-control-lg", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.OverallModuleMark, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-group mb-4">
+                            <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill shadow">Create Student</button>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="text-center mt-4">
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-success btn-lg rounded-pill" })
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function calculateAverage() {
+            var a1 = parseFloat(document.getElementById("Assessment1Mark").value) || 0;
+            var a2 = parseFloat(document.getElementById("Assessment2Mark").value) || 0;
+            var avg = (a1 + a2) / 2;
+            document.getElementById("OverallModuleMark").value = avg.toFixed(2);
+        }
+    </script>
+}

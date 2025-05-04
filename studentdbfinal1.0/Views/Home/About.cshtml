@@ -1,0 +1,55 @@
+﻿﻿@{
+    ViewBag.Title = "About";
+    ViewBag.Message = "Learn more about our student database system!";
+}
+
+<main aria-labelledby="title">
+    <!-- Page Title -->
+    <h2 id="title" class="text-center text-primary">@ViewBag.Title</h2>
+
+    <!-- Subheading with a brief description -->
+    <h3 class="text-center text-secondary">@ViewBag.Message</h3>
+
+    <!-- Content Section with Information about the Database -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- About the Database -->
+                <p class="lead">
+                    The student database system is designed to manage and store essential student information
+                    in a structured and efficient way. It serves as a central repository for storing student details,
+                    including personal information (surname, first name, age), contact details (telephone, address, email),
+                    and academic performance (assessment marks and overall module mark).
+                </p>
+
+                <p>
+                    This system allows administrators and authorized users to add, edit, and delete student records.
+                    Each student's information is stored in a relational database, ensuring consistency and integrity.
+                    With this system, users can easily retrieve and manage student data, making it ideal for educational institutions.
+                </p>
+
+                <p>
+                    The system also supports secure data entry and validation, ensuring that all data entered is accurate and up-to-date.
+                    Additionally, the system provides user-friendly interfaces for interacting with the database,
+                    making it accessible to users with varying levels of technical expertise.
+                </p>
+
+                <!-- Features of the Database -->
+                <h4 class="mt-4 text-primary">Key Features of the Database</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">Centralized storage for student records.</li>
+                    <li class="list-group-item">Simple interfaces for adding, editing, and deleting student data.</li>
+                    <li class="list-group-item">Validation and error handling to ensure accurate data input.</li>
+                    <li class="list-group-item">Easy retrieval of student information by administrators.</li>
+                    <li class="list-group-item">Secure access and data management through role-based permissions.</li>
+                </ul>
+
+                <!-- Conclusion -->
+                <p class="mt-4">
+                    With its user-friendly design and robust functionality, the student database system ensures efficient
+                    and secure management of student data, improving the workflow and data management process in educational environments.
+                </p>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,80 @@
+﻿﻿@model IEnumerable<studentdbfinal1._0.Studentquery1>
+
+@{
+    ViewBag.Title = "Student Records";
+}
+
+<!-- Full-width background for the entire page -->
+<div class="container-fluid bg-light p-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <!-- Header with a nice blue background and white text -->
+            <h2 class="text-center text-white bg-primary p-4 rounded mb-4 shadow-lg" style="font-size: 2rem;">
+                Student Records
+            </h2>
+
+            <!-- Action Link - Create New -->
+            <div class="text-right mb-3">
+                <a href="@Url.Action("Create")" class="btn btn-success btn-lg rounded-pill shadow-lg">
+                    <i class="fas fa-plus-circle"></i> Create New Student
+                </a>
+            </div>
+
+            <!-- Table Section with Full-width Background Color -->
+            <div class="card shadow-lg" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px; overflow-x: auto;">
+                <!-- Table now has a max width and no overflow -->
+                <table class="table table-striped table-bordered" style="width: 100%; table-layout: auto; font-size: 1.1rem;">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.First().Surname)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().FirstName)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Age)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().BNumber)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Telephone)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Address)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Assessment1Mark)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Assessment2Mark)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().OverallModuleMark)</th>
+                            <th class="text-center" style="min-width: 300px;">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BNumber)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Telephone)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Assessment1Mark)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Assessment2Mark)</td>
+                                <td>@Html.DisplayFor(modelItem => item.OverallModuleMark)</td>
+                                <td class="text-center" style="white-space: nowrap; overflow: hidden; max-width: 350px;">
+                                    <!-- Action Buttons with icons -->
+                                    <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a> |
+                                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-eye"></i> Details
+                                    </a> |
+                                    <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?')">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

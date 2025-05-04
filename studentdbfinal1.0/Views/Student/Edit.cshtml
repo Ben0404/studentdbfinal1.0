@@ -1,0 +1,184 @@
+﻿﻿@model studentdbfinal1._0.Studentquery1
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!-- Page Wrapper with soft background color -->
+<div class="container-fluid bg-light p-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Header with a nice blue background and white text -->
+            <h2 class="text-center text-white bg-primary p-4 rounded mb-4 shadow-lg" style="font-size: 2rem;">
+                Edit Student Record
+            </h2>
+
+            <!-- Form Card with padding and shadow -->
+            <div class="card shadow-lg p-4" style="background-color: #f8f9fa; border-radius: 10px;">
+                <!-- Form Start -->
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <!-- Form Sections -->
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+                        @Html.HiddenFor(model => model.Id)
+
+                        <!-- Student Details Section -->
+                        <h4 class="text-primary mb-3">
+                            <i class="fas fa-user"></i> Student Details
+                        </h4>
+
+                        <!-- Surname Field -->
+                        <div class="form-group row mb-4">
+                            <label for="Surname" class="col-md-3 col-form-label">
+                                <i class="fas fa-user"></i> Surname
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- First Name Field -->
+                        <div class="form-group row mb-4">
+                            <label for="FirstName" class="col-md-3 col-form-label">
+                                <i class="fas fa-user-circle"></i> First Name
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Age Field -->
+                        <div class="form-group row mb-4">
+                            <label for="Age" class="col-md-3 col-form-label">
+                                <i class="fas fa-birthday-cake"></i> Age
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- BNumber Field -->
+                        <div class="form-group row mb-4">
+                            <label for="BNumber" class="col-md-3 col-form-label">
+                                <i class="fas fa-id-badge"></i> BNumber
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.BNumber, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                @Html.ValidationMessageFor(model => model.BNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Contact Information Section -->
+                        <h4 class="text-primary mt-4 mb-3">
+                            <i class="fas fa-phone-alt"></i> Contact Information
+                        </h4>
+
+                        <!-- Telephone Field -->
+                        <div class="form-group row mb-4">
+                            <label for="Telephone" class="col-md-3 col-form-label">
+                                <i class="fas fa-phone"></i> Telephone
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Address Field -->
+                        <div class="form-group row mb-4">
+                            <label for="Address" class="col-md-3 col-form-label">
+                                <i class="fas fa-home"></i> Address
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group row mb-4">
+                            <label for="Email" class="col-md-3 col-form-label">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Assessment Marks Section -->
+                        <h4 class="text-primary mt-4 mb-3">
+                            <i class="fas fa-clipboard-list"></i> Assessment Information
+                        </h4>
+
+                        <!-- Assessment 1 Mark Field -->
+                        <div class="form-group row mb-4">
+                            <label for="Assessment1Mark" class="col-md-3 col-form-label">
+                                <i class="fas fa-chart-bar"></i> Assessment 1 Mark
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Assessment1Mark, new { htmlAttributes = new { @class = "form-control form-control-lg", @oninput = "calculateAverage()" } })
+                                @Html.ValidationMessageFor(model => model.Assessment1Mark, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Assessment 2 Mark Field -->
+                        <div class="form-group row mb-4">
+                            <label for="Assessment2Mark" class="col-md-3 col-form-label">
+                                <i class="fas fa-clipboard-check"></i> Assessment 2 Mark
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Assessment2Mark, new { htmlAttributes = new { @class = "form-control form-control-lg", @oninput = "calculateAverage()" } })
+                                @Html.ValidationMessageFor(model => model.Assessment2Mark, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Overall Module Mark Field -->
+                        <div class="form-group row mb-4">
+                            <label for="OverallModuleMark" class="col-md-3 col-form-label">
+                                <i class="fas fa-trophy"></i> Overall Module Mark
+                            </label>
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.OverallModuleMark, new { htmlAttributes = new { @class = "form-control form-control-lg", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.OverallModuleMark, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group row mb-4">
+                            <div class="col-md-9 offset-md-3">
+                                <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill shadow-lg">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Back Link -->
+            <div class="text-center mt-4">
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-primary btn-lg rounded-pill" })
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        function calculateAverage() {
+            var assessment1 = parseFloat(document.getElementById("Assessment1Mark").value) || 0;
+            var assessment2 = parseFloat(document.getElementById("Assessment2Mark").value) || 0;
+            var average = (assessment1 + assessment2) / 2;
+
+            // Set the Overall Module Mark value to the calculated average
+            document.getElementById("OverallModuleMark").value = average.toFixed(2);
+        }
+    </script>
+}

@@ -1,0 +1,61 @@
+﻿﻿@{
+    ViewBag.Title = "Contact";
+    ViewBag.Message = "Get in touch with us for any queries or support!";
+}
+
+<main aria-labelledby="title" class="bg-light py-5">
+    <!-- Page Title -->
+    <h2 id="title" class="text-center text-primary font-weight-bold" style="font-size: 3rem;">@ViewBag.Title</h2>
+
+    <!-- Subheading with brief description -->
+    <h3 class="text-center text-secondary" style="font-size: 1.5rem;">@ViewBag.Message</h3>
+
+    <!-- Address Section -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Office Information Section -->
+                <div class="card p-4 mb-4 shadow-sm" style="background-color: #f7f7f7;">
+                    <h4 class="text-info font-weight-bold mb-3">Our Office</h4>
+                    <address class="text-muted" style="font-size: 1.2rem;">
+                        <p>
+                            123 Tech Avenue<br />
+                            Silicon Valley, CA 94016<br />
+                            <abbr title="Phone">P:</abbr> 123.456.7890
+                        </p>
+                    </address>
+                </div>
+
+                <!-- Support Information Section -->
+                <div class="card p-4 mb-4 shadow-sm" style="background-color: #f7f7f7;">
+                    <h4 class="text-info font-weight-bold mb-3">Contact Support</h4>
+                    <address class="text-muted" style="font-size: 1.2rem;">
+                        <strong class="text-primary">Customer Support:</strong>
+                        <a href="mailto:support@techcompany.com" class="text-info">support@techcompany.com</a><br />
+                        <strong class="text-primary">Sales Inquiry:</strong>
+                        <a href="mailto:sales@techcompany.com" class="text-info">sales@techcompany.com</a><br />
+                        <strong class="text-primary">Marketing:</strong>
+                        <a href="mailto:marketing@techcompany.com" class="text-info">marketing@techcompany.com</a>
+                    </address>
+                </div>
+
+                <!-- Social Media Section -->
+                <div class="card p-4 mb-4 shadow-sm" style="background-color: #f7f7f7;">
+                    <h4 class="text-info font-weight-bold mb-3">Follow Us</h4>
+                    <p class="text-muted" style="font-size: 1.2rem;">Stay connected with us on our social media channels:</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="https://twitter.com/TechCompany" target="_blank" class="btn btn-outline-primary btn-lg">Twitter</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://facebook.com/TechCompany" target="_blank" class="btn btn-outline-primary btn-lg">Facebook</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://linkedin.com/company/TechCompany" target="_blank" class="btn btn-outline-primary btn-lg">LinkedIn</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
